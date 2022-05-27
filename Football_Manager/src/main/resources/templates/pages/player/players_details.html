@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <meta charset="utf-8">
+  <title>Details Player</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card mb-2 mt-2">
+        <div class="card-header">
+          Details Player
+        </div>
+        <div class="card-body">
+          <table class="table table-hover">
+            <tr>
+              <th>id</th>
+              <td th:text="${player.getId()}"></td>
+            </tr>
+            <tr>
+              <th>first name</th>
+              <td th:text="${player.getFirstName()}"></td>
+            </tr>
+            <tr>
+              <th>last name</th>
+              <td th:text="${player.getLastName()}"></td>
+            </tr>
+            <tr>
+              <th>age</th>
+              <td th:text="${player.getAge()}"></td>
+            </tr>
+            <tr>
+              <th>experience</th>
+              <td th:text="${player.getExperience()}"></td>
+            </tr>
+            <tr>
+              <th>price</th>
+              <td th:text="${player.getPrice()}"></td>
+            </tr>
+            <tr>
+              <th>created</th>
+              <td th:text="${#calendars.format(player.getCreated(),'dd MMMM yyyy')}"></td>
+            </tr>
+            <tr>
+              <th>updated</th>
+              <td th:text="${#calendars.format(player.getUpdated(),'dd MMMM yyyy')}"></td>
+            </tr>
+            <tr>
+              <th>team id</th>
+              <td>
+                <a th:href="@{'/teams/details/' + ${player.getTeam().getId()}}" type="button" class="btn btn-link" th:text="${player.getTeam().getId()}">details</a>
+              </td>
+            </tr>
+            <tr>
+              <th>team type</th>
+              <td th:text="${player.getTeam().getTeamType()}"></td>
+            </tr>
+          </table>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
