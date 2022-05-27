@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="utf-8">
+    <title>Details Team</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-2 mt-2">
+                <div class="card-header">
+                    Details Team
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>id</th>
+                            <td th:text="${team.getId()}"></td>
+                        </tr>
+                        <tr>
+                            <th>type</th>
+                            <td th:text="${team.getTeamType()}"></td>
+                        </tr>
+                        <tr>
+                            <th>name</th>
+                            <td th:text="${team.getName()}"></td>
+                        </tr>
+                        <tr>
+                            <th>created</th>
+                            <td th:text="${#calendars.format(team.getCreated(),'dd MMMM yyyy')}"></td>
+                        </tr>
+                        <tr>
+                            <th>updated</th>
+                            <td th:text="${#calendars.format(team.getUpdated(),'dd MMMM yyyy')}"></td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <div>
+                        <a th:href="@{'/players/new/' + ${team.getId()}}" type="button" class="btn btn-primary">Add new player</a>
+                    </div>
+                    <hr>
+                    <div>
+                        <a th:href="@{'/players/teams/' + ${team.getId()}}" type="button" class="btn btn-primary">Show all players</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
