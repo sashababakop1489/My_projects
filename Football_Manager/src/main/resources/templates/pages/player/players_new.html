@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="utf-8">
+    <title>New Player</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mt-2">
+                <div class="card-header">
+                    <h4>New Player</h4>
+                </div>
+                <div class="card-body">
+                    <form action="#" th:action="@{/players/new}" th:object="${player}" method="post">
+                        <input type="hidden" th:field="*{teamId}" th:value="${teamId}" th:attr="name='teamId'">
+                        <div class="form-group">
+                            <label for="firstName">first name</label>
+                            <input type="text" class="form-control" id="firstName" aria-describedby="firstName" placeholder="Enter first name" th:field="*{firstName}">
+                        </div>
+                        <div style="color:red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name error</div>
+                        <div class="form-group">
+                           <label for="lastName">last name</label>
+                            <input type="text" class="form-control" id="lastName" aria-describedby="lastName" placeholder="Enter last name" th:field="*{lastName}">
+                        </div>
+                        <div style="color:red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name error</div>
+                        <div class="form-group">
+                            <label for="age">age</label>
+                            <input type="text" class="form-control" id="age" aria-describedby="age" placeholder="Enter age" th:field="*{age}">
+                        </div>
+                        <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Name error</div>
+                        <div class="form-group">
+                            <label for="experience">experience</label>
+                            <input type="text" class="form-control" id="experience" aria-describedby="experience" placeholder="How many months" th:field="*{experience}">
+                        </div>
+                        <div style="color:red" th:if="${#fields.hasErrors('experience')}" th:errors="*{experience}">Name error</div>
+                        <button type="submit" class="btn btn-primary">Create!</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
